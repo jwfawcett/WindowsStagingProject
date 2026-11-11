@@ -131,7 +131,16 @@ int payload () {
 				// handle error here.
 				break;
 			}
-  
+
+			if (dwSize == 0) break;
+
+			buffer.resize(dwSize);
+
+			ZeroMemory(&buffer[0], dwSize);
+
+			if (!WinHttpReadData(hRequest, (LPVOID)&buffer[0], dwSize, &dwDownloaded)) {
+				break;
+			}
 }
 
 
