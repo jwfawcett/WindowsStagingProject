@@ -13,7 +13,7 @@ using namespace std;
 using namespace std::chrono;
 #include <cmath>
 #include <winhttp.h>
-#include <vector
+#include <vector>
 
 // link winhttp library
 #pragma comment(lib, "winhttp.lib")
