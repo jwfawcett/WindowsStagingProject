@@ -1,5 +1,5 @@
 
-добро пожаловать, товарищ
+// добро пожаловать, товарищ
 
 //Time Skipping
 //Used to see if AV is using time skipping to speed up time to simulate execution
