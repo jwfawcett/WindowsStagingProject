@@ -18,7 +18,7 @@ using namespace std::chrono;
 // link winhttp library
 #pragma comment(lib, "winhttp.lib")
 
-
+// Теперь о веселье
 
 int TickleMeElmo() {
     DWORD tick1;
